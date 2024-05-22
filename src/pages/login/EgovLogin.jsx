@@ -29,11 +29,13 @@ function EgovLogin(props) {
                 </div>
                 {/* <!--// Location --> */}
 
+                {/* <!-- Login Module --> */}
                 <div className="layout">
                     <EgovLoginContent
                         onChangeLogin={onChangeLogin}
                     ></EgovLoginContent>
                 </div>
+                {/* <!--// Login Module --> */}
             </div>
         </div>
     );
