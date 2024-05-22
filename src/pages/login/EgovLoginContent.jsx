@@ -57,7 +57,7 @@ function EgovLoginContent(props) {
 
     const submitFormHandler = (e) => {
         console.log("EgovLoginContent submitFormHandler()");
-        
+
         const loginUrl = "/auth/login-jwt"
 
         const requestOptions = {
@@ -68,8 +68,7 @@ function EgovLoginContent(props) {
             body: JSON.stringify(userInfo)
         }
 
-        EgovNet.requestFetch(loginUrl,
-            requestOptions,
+        EgovNet.requestFetch(loginUrl, requestOptions,
             (resp) => {
                 let resultVO = resp.resultVO;
                 let jToken = resp?.jToken || null;
@@ -95,7 +94,7 @@ function EgovLoginContent(props) {
 
     console.log("------------------------------EgovLoginContent [End]");
     console.groupEnd("EgovLoginContent");
-    
+
     return (
         <div className="contents" id="contents">
             {/* <!-- 본문 --> */}

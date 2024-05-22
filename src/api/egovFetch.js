@@ -17,26 +17,26 @@ export function requestFetch(url, requestOptions, handler, errorHandler) {
     const sessionUser = getSessionItem('loginUser');
     const sessionUserId = sessionUser?.id || null;
     const jToken = getSessionItem('jToken');
-    if(sessionUserId != null && sessionUserId !== undefined){
+    if(sessionUserId != null && sessionUserId !== undefined) {
         if( !requestOptions['headers'] ) requestOptions['headers']={}
         if( !requestOptions['headers']['Authorization'] ) requestOptions['headers']['Authorization']=null;
         requestOptions['headers']['Authorization'] = jToken;
     }
-    
 
-    //CORS ISSUE 로 인한 조치 - origin 및 credentials 추가 
+
+    //CORS ISSUE 로 인한 조치 - origin 및 credentials 추가
     // origin 추가
     if (!requestOptions['origin']) {
         requestOptions = { ...requestOptions, origin: SERVER_URL };
     }
-    // credentials 추가 
+    // credentials 추가
     if (!requestOptions['credentials']) {
         requestOptions = { ...requestOptions, credentials: 'include' };
     }
 
     fetch(SERVER_URL + url, requestOptions)
         .then(response => {// response Stream. Not completion object
-            //console.log("requestFetch [Response Stream] ", response); 
+            //console.log("requestFetch [Response Stream] ", response);
             return response.json();
         })
         .then((resp) => {
